@@ -59,14 +59,23 @@ const videoList = (function () {
   // TASK:
   // 1. Using the decorated object, return an HTML string containing all the expected
   // TEST IT!
-  const generateVideoItemHtml = function (video) {
-    let link = `https://www.youtube.com/watch?v=${video.id}`;
-    return `
-      <li data-id="${video.id}" class="video-card">
-        <img src="${video.thumbnail}" class="card-image" alt="${video.description}">
-        <a href="${link}" target="_blank">${video.title}</a>
-      </li>
-    `;
+  const generateVideoItemHtml = function () {
+    let result = '';
+    let videos = store.videos;
+    for (let i = 0; i < videos.length;) {
+      result += '<div class="row">';
+      for (let j = 0; j < 12; j++, i++) {
+        let link = `https://www.youtube.com/watch?v=${videos[i].id}`;
+        result += `
+          <div data-id="${videos[i].id}" class="col-12 col-sm-6 col-md-3 col-lg-2 video-card">
+            <img src="${videos[i].thumbnail}" class="card-image" alt="${videos[i].description}">
+            <a href="${link}" target="_blank">${videos[i].title}</a>
+          </div>
+        `;
+      }
+      result += '</div>';
+    }
+    return result;
   };
 
   /**
@@ -78,8 +87,9 @@ const videoList = (function () {
   // 2. Add this array of DOM elements to the appropriate DOM element
   // TEST IT!
   const render = function () {
-    const videoItemsHtml = store.videos.map(generateVideoItemHtml).join('');
-    $('.results').html(videoItemsHtml);
+
+    const videoItemHtml = generateVideoItemHtml();
+    $('.results').html(videoItemHtml);
   };
 
   /**
