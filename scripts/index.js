@@ -104,8 +104,9 @@ const addVideosToStore = function (videos) {
 // 1. Map through `store.videos`, sending each `video` through `generateVideoItemHtml`
 // 2. Add this array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function () {
-
+const render = function (data) {
+  const results = data.items.map((item, index) => renderResult(item));
+  $('.js-search-results').html(results);
 };
 
 /**
@@ -125,11 +126,20 @@ const render = function () {
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function () {
+  $('form').submit(event => {
 
+    event.preventDefault();
+    const queryTarget = $(event.currentTarget).find('#search-term');
+    const queryTargetValue = queryTarget.val();
+    queryTarget.val('');
+ 
+  });
 };
 
 // When DOM is ready:
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
+  handleFormSubmit();
+
 });
