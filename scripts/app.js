@@ -18,9 +18,7 @@ const API_KEY = 'AIzaSyDyNNLNOyqylF-xs0q-7ZOHLvadCIh-7jo';
     thumbnail: 'https://img.youtube.com/some/thumbnail.jpg'
   }
 */
-const store = {
-  videos: []
-};
+
 
 // TASK: Add the Youtube Search API Base URL here:
 // Documentation is here: https://developers.google.com/youtube/v3/docs/search/list#usage
@@ -126,13 +124,16 @@ const render = function (data) {
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function () {
-  $('form').submit(event => {
-
+  $('form').on('submit', event => {
     event.preventDefault();
-    const queryTarget = $(event.currentTarget).find('#search-term');
-    const queryTargetValue = queryTarget.val();
-    queryTarget.val('');
- 
+    // Get user input
+    const userInputField = $('#search-term');
+    const userInput = userInputField.val();
+    userInputField.val('');
+    // Modify state
+    fetchVideos(userInput, callback);
+    // Render the new state
+    render();
   });
 };
 
@@ -143,3 +144,11 @@ $(function () {
   handleFormSubmit();
 
 });
+
+// Get user input
+  // handleFormSubmit
+// Modify state
+  // fetchVideos
+  // decorateResponse
+  // generateVideoItemHtml
+// Update the view

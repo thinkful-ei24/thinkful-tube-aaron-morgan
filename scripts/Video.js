@@ -1,0 +1,6 @@
+const Video = function() {
+  
+  return {
+
+  };
+};
