@@ -67,9 +67,9 @@ const videoList = (function () {
       for (let j = 0; j < 12; j++, i++) {
         let link = `https://www.youtube.com/watch?v=${videos[i].id}`;
         result += `
-          <div data-id="${videos[i].id}" class="col-12 col-sm-6 col-md-3 col-lg-2 video-card">
+          <div data-id="${videos[i].id}" class="col-12 col-sm-6 col-md-3 col-xl-2 video-card">
             <img src="${videos[i].thumbnail}" class="card-image" alt="${videos[i].description}">
-            <a href="${link}" target="_blank">${videos[i].title}</a>
+            <a href="${link}" target="_blank" class="video-link">${videos[i].title}</a>
           </div>
         `;
       }
@@ -111,6 +111,7 @@ const videoList = (function () {
   const handleFormSubmit = function() {
     $('form').on('submit', event => {
       event.preventDefault();
+      
       // Get user input
       const userInputField = $('#search-term');
       const userInput = userInputField.val();

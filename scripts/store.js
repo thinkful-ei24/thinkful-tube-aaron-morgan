@@ -11,7 +11,13 @@ const store = (function() {
   // TASK:
   // 1. Set the received array as the value held in store.videos
   // TEST IT!
+  const clearVideos = function () {
+    videos.splice(0);
+  };
+  
+
   const addVideoList = function(videoList) {
+    clearVideos();
     for (const video of videoList) {
       videos.push(video);
     }
