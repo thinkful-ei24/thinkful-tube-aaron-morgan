@@ -1,4 +1,9 @@
-const API_KEY = 'YOUR_KEY_HERE';
+'use strict';
+
+
+// AIzaSyDyNNLNOyqylF-xs0q-7ZOHLvadCIh-7jo
+
+const API_KEY = 'AIzaSyDyNNLNOyqylF-xs0q-7ZOHLvadCIh-7jo';
 
 /*
   We want our store to hold an array of "decorated" video objects - i.e. objects that
@@ -19,7 +24,7 @@ const store = {
 
 // TASK: Add the Youtube Search API Base URL here:
 // Documentation is here: https://developers.google.com/youtube/v3/docs/search/list#usage
-const BASE_URL = '';
+const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 /**
  * @function fetchVideos
@@ -35,8 +40,12 @@ const BASE_URL = '';
 //    as the last argument
 //
 // TEST IT! Execute this function and console log the results inside the callback.
-const fetchVideos = function(searchTerm, callback) {
-
+const fetchVideos = function (searchTerm, callback) {
+  const query = {
+    q: `${searchTerm}`,
+    per_page: 5
+  };
+  $.getJSON(BASE_URL, query, callback);
 };
 
 /**
@@ -54,7 +63,7 @@ const fetchVideos = function(searchTerm, callback) {
 //
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-const decorateResponse = function(response) {
+const decorateResponse = function (response) {
 
 };
 
@@ -67,7 +76,7 @@ const decorateResponse = function(response) {
 // TASK:
 // 1. Using the decorated object, return an HTML string containing all the expected
 // TEST IT!
-const generateVideoItemHtml = function(video) {
+const generateVideoItemHtml = function (video) {
 
 };
 
@@ -79,7 +88,7 @@ const generateVideoItemHtml = function(video) {
 // TASK:
 // 1. Set the received array as the value held in store.videos
 // TEST IT!
-const addVideosToStore = function(videos) {
+const addVideosToStore = function (videos) {
 
 };
 
@@ -92,7 +101,7 @@ const addVideosToStore = function(videos) {
 // 1. Map through `store.videos`, sending each `video` through `generateVideoItemHtml`
 // 2. Add this array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function() {
+const render = function () {
 
 };
 
@@ -112,7 +121,7 @@ const render = function() {
 //      `addVideosToStore` function
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
-const handleFormSubmit = function() {
+const handleFormSubmit = function () {
 
 };
 
