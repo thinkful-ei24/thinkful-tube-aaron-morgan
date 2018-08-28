@@ -2,13 +2,12 @@
 
 'use strict';
 
-// Get user input
-// handleFormSubmit
-// Modify state
-// fetchVideos
-// decorateResponse
-// generateVideoItemHtml
-// Update the view
+// Making HTML more accessible
+// Create a better UX with layout
+  // Make images uniform, smaller
+  // Make images clickable
+  // Remove list styling
+  // Make inline-block
 
 /*
     We want our store to hold an array of "decorated" video objects - i.e. objects that
