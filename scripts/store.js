@@ -12,7 +12,9 @@ const store = (function() {
   // 1. Set the received array as the value held in store.videos
   // TEST IT!
   const addVideoList = function(videoList) {
-    videos = videoList;
+    for (const video of videoList) {
+      videos.push(video);
+    }
   };
 
   return {
