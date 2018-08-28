@@ -40,13 +40,16 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 //    as the last argument
 //
 // TEST IT! Execute this function and console log the results inside the callback.
+// items -> [X] -> snippet -> thumbnails -> high -> url
 const fetchVideos = function (searchTerm, callback) {
   const query = {
+    part: 'snippet',
     q: `${searchTerm}`,
-    per_page: 5
+    key: API_KEY
   };
   $.getJSON(BASE_URL, query, callback);
 };
+
 
 /**
  * @function decorateResponse
