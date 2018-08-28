@@ -44,7 +44,8 @@ const videoList = (function () {
       return {
         id: item.id.videoId,
         title: item.snippet.title,
-        thumbnail: item.snippet.thumbnails.high.url
+        thumbnail: item.snippet.thumbnails.high.url,
+        description: item.snippet.description
       };
     });
   };
@@ -61,8 +62,8 @@ const videoList = (function () {
   const generateVideoItemHtml = function (video) {
     let link = `https://www.youtube.com/watch?v=${video.id}`;
     return `
-      <li data-id="${video.id}">
-        <img src="${video.thumbnail}">
+      <li data-id="${video.id}" class="video-card">
+        <img src="${video.thumbnail}" class="card-image" alt="${video.description}">
         <a href="${link}" target="_blank">${video.title}</a>
       </li>
     `;

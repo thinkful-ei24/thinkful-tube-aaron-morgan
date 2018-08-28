@@ -193,7 +193,8 @@ const YouTube = (function() {
     const query = {
       part: 'snippet',
       q: `${searchTerm}`,
-      key: API_KEY
+      key: API_KEY,
+      maxResults: 32,
     };
     $.getJSON(BASE_URL, query, callback);
   };
